@@ -208,11 +208,6 @@
                                         <img src="{{ $productImageUrl }}"
                                             alt="{{ $product->name }}"
                                             loading="lazy"
-                                     @if ($hasValidImage)
-                                        {{-- Foto Asli dari Penjual --}}
-                                        <img src="{{ $productImageUrl }}"
-                                            alt="{{ $product->name }}"
-                                            loading="lazy"
                                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                             onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
                                         
@@ -246,7 +241,6 @@
                                                 PentaCart Kitchen
                                             </span>
                                         </div>
-                                    @endif
                                     @endif
 
                                     {{-- Badge Status Ketersediaan --}}

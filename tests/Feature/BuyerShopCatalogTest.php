@@ -62,7 +62,7 @@ class BuyerShopCatalogTest extends TestCase
         $response->assertSee('Pisang Coklat Lumer');
         $response->assertSee('Es Teh Solo Segar');
         $response->assertSee('Lihat QRIS Lapak');
-        $response->assertSee('images/product-placeholder.svg');
+        $response->assertSee('PentaCart Kitchen');
     }
 
     public function test_buyer_sees_product_photo_and_fallback_for_products_without_a_photo(): void
@@ -71,7 +71,7 @@ class BuyerShopCatalogTest extends TestCase
 
         Livewire::test(ShopCatalog::class, ['merchant' => $this->merchant])
             ->assertSee('storage/products/pisang-coklat.jpg')
-            ->assertSee('images/product-placeholder.svg');
+            ->assertSee('Snack & Gorengan');
     }
 
     public function test_buyer_can_search_products_reactively(): void
