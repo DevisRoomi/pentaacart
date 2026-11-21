@@ -209,7 +209,7 @@
 
                     <article id="card-{{ $m->slug }}"
                              onmouseenter="playHapticSound('hover')"
-                             class="merchant-bento-card group/card relative rounded-3xl p-5 sm:p-6 bg-white/95 border border-slate-200/80 shadow-md shadow-blue-900/5 hover:shadow-xl hover:border-blue-300 transition-all duration-300 flex flex-col justify-between overflow-hidden min-h-[420px]">
+                             class="merchant-bento-card group/card relative rounded-3xl p-5 sm:p-6 bg-white/95 border border-slate-200/80 shadow-md shadow-blue-900/5 hover:shadow-xl hover:border-blue-300 transition-all duration-300 flex flex-col justify-between overflow-hidden min-h-[445px]">
                         
                         {{-- Ambient Accent Glow --}}
                         <div class="pointer-events-none absolute -right-10 -top-10 w-36 h-36 rounded-full bg-blue-500/5 blur-2xl group-hover/card:bg-blue-500/10 transition-colors"></div>
@@ -240,7 +240,7 @@
                         </div>
 
                         {{-- Card Middle: Dynamic Holographic Stage (Berubah Jadi QRIS saat Cursor Hover di Desktop) --}}
-                        <div class="relative z-10 flex-1 py-3 flex flex-col justify-center overflow-hidden min-h-[250px]">
+                        <div class="relative z-10 flex-1 py-3 flex flex-col justify-center overflow-hidden min-h-[265px]">
                             
                             {{-- Panel 1: Info Lapak & Daftar Harga Menu Lengkap --}}
                             <div class="shutter-menu-panel space-y-2.5">
@@ -264,9 +264,9 @@
 
                                 {{-- Daftar Menu & Harga Langsung di Kartu --}}
                                 @if ($m->products->isNotEmpty())
-                                    <div class="pt-1.5 space-y-1.5 max-h-[140px] overflow-y-auto no-scrollbar">
+                                    <div class="pt-1.5 space-y-1.5 max-h-[195px] overflow-y-auto no-scrollbar">
                                         @foreach ($m->products as $prod)
-                                            <div class="flex items-center justify-between text-xs bg-slate-50 hover:bg-slate-100/90 px-3 py-2 rounded-xl border border-slate-100/90 transition-colors">
+                                            <div class="flex items-center justify-between text-xs bg-slate-50 hover:bg-slate-100/90 px-3 py-1.5 rounded-xl border border-slate-100/90 transition-colors">
                                                 <span class="text-slate-800 font-semibold truncate pr-2">{{ $prod->name }}</span>
                                                 <span class="font-black text-blue-700 shrink-0">Rp {{ number_format($prod->price, 0, ',', '.') }}</span>
                                             </div>
@@ -291,14 +291,14 @@
                                     <div class="pointer-events-none absolute inset-x-3 h-0.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent shadow-[0_0_10px_2px_rgba(59,130,246,0.85)] scanner-shutter-beam opacity-0 z-20"></div>
 
                                     {{-- Wadah QRIS Besar --}}
-                                    <div class="w-full flex-1 max-h-[195px] flex items-center justify-center p-2 rounded-xl bg-white border border-slate-200/90 shadow-sm group-hover/qr:border-blue-400 group-hover/qr:shadow-md transition">
+                                    <div class="w-full flex-1 max-h-[210px] flex items-center justify-center p-2 rounded-xl bg-white border border-slate-200/90 shadow-sm group-hover/qr:border-blue-400 group-hover/qr:shadow-md transition">
                                         <img src="{{ $qrisUrl }}"
                                              alt="QRIS {{ $m->name }}"
                                              width="180"
                                              height="180"
                                              loading="lazy"
                                              decoding="async"
-                                             class="w-full h-full max-h-[180px] object-contain select-none">
+                                             class="w-full h-full max-h-[195px] object-contain select-none">
                                     </div>
                                     
                                     <span class="mt-2 text-[11px] font-extrabold text-blue-600 group-hover/qr:text-blue-700 flex items-center gap-1.5 shrink-0">
