@@ -28,8 +28,10 @@ foreach ($directories as $dir) {
 $sourceDatabase = __DIR__.'/../database/database.sqlite';
 $targetDatabase = '/tmp/database.sqlite';
 
-if (file_exists($sourceDatabase) && (! file_exists($targetDatabase) || filesize($targetDatabase) === 0)) {
-    @copy($sourceDatabase, $targetDatabase);
+if (file_exists($sourceDatabase)) {
+    if (! file_exists($targetDatabase) || filemtime($sourceDatabase) > filemtime($targetDatabase) || filesize($targetDatabase) !== filesize($sourceDatabase)) {
+        @copy($sourceDatabase, $targetDatabase);
+    }
 }
 
 define('LARAVEL_START', microtime(true));
