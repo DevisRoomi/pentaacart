@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="description" content="PentaCart IDN - Katalog QRIS & Pesan Antar Asrama Mahasiswa IDN Boarding School. Lihat daftar menu, scan QRIS langsung, dan pesan via WhatsApp.">
     <meta name="theme-color" content="#2563eb">
     <title>{{ $title ?? 'PentaCart IDN - Katalog QRIS & Pesan Antar Asrama' }}</title>
