@@ -1,10 +1,14 @@
 <?php
 
+use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
+
 // Prepare writable directories in /tmp for Vercel serverless environment
 $directories = [
     '/tmp/views',
     '/tmp/storage',
     '/tmp/storage/app',
+    '/tmp/storage/app/public',
     '/tmp/storage/framework',
     '/tmp/storage/framework/cache',
     '/tmp/storage/framework/cache/data',
@@ -20,7 +24,7 @@ foreach ($directories as $dir) {
     }
 }
 
-// Copy sqlite database to /tmp if it exists and is not yet in /tmp
+// Copy sqlite database to /tmp so SQLite is writable & accessible in serverless
 $sourceDatabase = __DIR__.'/../database/database.sqlite';
 $targetDatabase = '/tmp/database.sqlite';
 
@@ -28,5 +32,12 @@ if (file_exists($sourceDatabase) && (! file_exists($targetDatabase) || filesize(
     @copy($sourceDatabase, $targetDatabase);
 }
 
-// Forward request to Laravel entry point
-require __DIR__.'/../public/index.php';
+define('LARAVEL_START', microtime(true));
+
+require __DIR__.'/../vendor/autoload.php';
+
+/** @var Application $app */
+$app = require_once __DIR__.'/../bootstrap/app.php';
+$app->useStoragePath('/tmp/storage');
+
+$app->handleRequest(Request::capture());
