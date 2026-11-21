@@ -1,9 +1,6 @@
 @import 'tailwindcss';
 
 @source '../views/**/*.blade.php';
-@source '../../app/Livewire/**/*.php';
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
 
 @theme {
     --font-sans: 'Plus Jakarta Sans', 'Instrument Sans', system-ui, -apple-system, sans-serif;

@@ -7,8 +7,6 @@ use App\Models\Product;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class StudentMerchantSeeder extends Seeder
 {
@@ -205,6 +203,25 @@ class StudentMerchantSeeder extends Seeder
                     ['name' => 'Paket Murah Basreng (4 pcs)', 'price' => 5000, 'description' => null],
                 ],
             ],
+            [
+                'student_name' => 'Kak Naufal',
+                'email' => 'naufal@pentacart.idn',
+                'phone' => '6285769367304',
+                'shop_name' => 'Es Mambo & Durian Kak Naufal',
+                'slug' => 'es-mambo-durian-kak-naufal',
+                'category' => 'Hanya Es',
+                'location' => 'Dapur',
+                'description' => 'Hanya es. Menyediakan es mambo segar dan es durian dingin nikmat.',
+                'keywords' => 'Hanya Es, es mambo, es durian, dapur, naufal, zizzahra',
+                'schedule' => [
+                    ['start' => '09:00', 'end' => '21:30'],
+                ],
+                'qris_file' => 'student-naufal.jpg',
+                'products' => [
+                    ['name' => 'Es Mambo', 'price' => 2000, 'description' => 'Es mambo segar'],
+                    ['name' => 'Es Durian', 'price' => 4000, 'description' => 'Es durian dingin nikmat'],
+                ],
+            ],
         ];
 
         foreach ($students as $data) {
@@ -216,7 +233,7 @@ class StudentMerchantSeeder extends Seeder
                 ]
             );
 
-            $qrisRelativePath = 'qris-images/' . $data['qris_file'];
+            $qrisRelativePath = 'qris-images/'.$data['qris_file'];
 
             $merchant = Merchant::updateOrCreate(
                 ['slug' => $data['slug']],
@@ -232,6 +249,8 @@ class StudentMerchantSeeder extends Seeder
                     'schedule' => $data['schedule'],
                 ]
             );
+
+            $merchant->products()->whereNotIn('name', collect($data['products'])->pluck('name'))->delete();
 
             foreach ($data['products'] as $prod) {
                 Product::updateOrCreate(

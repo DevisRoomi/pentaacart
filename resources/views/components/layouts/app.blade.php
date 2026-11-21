@@ -10,12 +10,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @livewireStyles
 </head>
 <body class="h-full bg-mesh-editorial bg-editorial-grid font-sans text-slate-800 antialiased selection:bg-blue-600 selection:text-white flex flex-col min-h-screen">
     {{-- Header / Navbar --}}
     <header class="sticky top-0 z-40 bg-white/70 backdrop-blur-md border-b border-slate-200/60 shadow-xs">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
             <a href="{{ route('home') }}" class="flex items-center gap-2 group">
                 <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-700 to-indigo-500 flex items-center justify-center text-white font-black text-lg shadow-sm shadow-blue-500/20 group-hover:scale-105 transition-transform">
                     P
@@ -27,37 +26,18 @@
             </a>
 
             <nav class="flex items-center gap-2 sm:gap-3 shrink-0">
-                <a href="{{ route('home') }}" class="hidden sm:inline text-xs sm:text-sm font-semibold text-slate-600 hover:text-blue-600 transition px-2.5 py-1.5 rounded-lg hover:bg-slate-100/60 whitespace-nowrap">
-                    Katalog
+                <a href="#katalog-lapak" class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-blue-700 bg-blue-50/90 hover:bg-blue-100/90 border border-blue-200/80 px-3.5 py-2 rounded-xl shadow-xs transition">
+                    <span>Semua Lapak</span>
+                    <svg class="size-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                    </svg>
                 </a>
-
-                @auth
-                    <a href="{{ route('merchant.profile') }}" class="text-xs sm:text-sm font-semibold text-slate-700 hover:text-blue-600 transition px-2.5 py-1.5 rounded-lg hover:bg-slate-100/60 flex items-center gap-1.5 whitespace-nowrap">
-                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                        <span class="hidden sm:inline">Lapak:</span>
-                        <span class="font-bold text-slate-900 truncate max-w-[100px] sm:max-w-[120px]">{{ Auth::user()->merchant->name ?? 'Profil Toko' }}</span>
-                    </a>
-                    
-                    <form action="{{ route('logout') }}" method="POST" class="inline">
-                        @csrf
-                        <button type="submit" class="text-xs font-semibold text-rose-600 hover:text-rose-700 px-2.5 py-1.5 rounded-lg hover:bg-rose-50 transition cursor-pointer whitespace-nowrap">
-                            Keluar
-                        </button>
-                    </form>
-                @else
-                    <a href="{{ route('login') }}" class="text-xs sm:text-sm font-semibold text-slate-600 hover:text-slate-900 px-2.5 py-1.5 whitespace-nowrap">
-                        Masuk
-                    </a>
-                    <a href="{{ route('register') }}" class="text-xs sm:text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl shadow-xs shadow-blue-600/30 transition-all hover:scale-[1.02] active:scale-95 whitespace-nowrap">
-                        Mulai Jualan
-                    </a>
-                @endauth
             </nav>
         </div>
     </header>
 
     {{-- Main Body Slot --}}
-    <main class="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+    <main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
         {{ $slot }}
     </main>
 
@@ -65,7 +45,5 @@
     <footer class="mt-auto border-t border-slate-200/60 bg-white/40 py-6 text-center text-xs text-slate-500">
         <p class="font-medium">PentaCart IDN &copy; {{ date('Y') }} &bull; Solusi QRIS & Pesan Antar Asrama Mahasiswa</p>
     </footer>
-
-    @livewireScripts
 </body>
 </html>

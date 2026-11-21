@@ -100,7 +100,7 @@ class Merchant extends Model
             return $query;
         }
 
-        $like = '%' . $term . '%';
+        $like = '%'.$term.'%';
 
         return $query->where(function (Builder $q) use ($like) {
             $q->where('name', 'like', $like)
@@ -120,6 +120,17 @@ class Merchant extends Model
         });
     }
 
+    public function getCategoryAttribute(): ?string
+    {
+        if (empty($this->keywords)) {
+            return null;
+        }
+
+        $parts = explode(',', $this->keywords);
+
+        return trim($parts[0] ?? '');
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -128,10 +139,5 @@ class Merchant extends Model
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);
-    }
-
-    public function orders(): HasMany
-    {
-        return $this->hasMany(Order::class);
     }
 }
