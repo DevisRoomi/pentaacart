@@ -100,14 +100,15 @@ class StudentMerchantSeeder extends Seeder
                 'slug' => 'aqeepstore',
                 'category' => 'Makanan Ringan',
                 'location' => 'Kamar Asrama',
-                'description' => 'Moring pedas & asin.',
-                'keywords' => 'Snack & Cemilan, moring, pedas, asin, tsaqif',
+                'description' => 'Moring pedas & asin (2k, beli 3 5k), Makaroni (3k, beli 2 5k).',
+                'keywords' => 'Snack & Cemilan, moring, makaroni, pedas, asin, tsaqif',
                 'schedule' => [
                     ['start' => '08:00', 'end' => '22:00'],
                 ],
                 'qris_file' => 'student-aqeepstore.jpg',
                 'products' => [
-                    ['name' => 'Moring Pedas & Asin', 'price' => 2000, 'description' => null],
+                    ['name' => 'Moring (Beli 3 Rp 5k)', 'price' => 2000, 'description' => 'Beli 3 hanya Rp 5.000'],
+                    ['name' => 'Makaroni (Beli 2 Rp 5k)', 'price' => 3000, 'description' => 'Beli 2 hanya Rp 5.000'],
                 ],
             ],
             [
@@ -170,18 +171,20 @@ class StudentMerchantSeeder extends Seeder
                 'student_name' => 'Fauzan Rizky',
                 'email' => 'fauzan@pentacart.idn',
                 'phone' => '6285719496404',
-                'shop_name' => 'Cordog',
-                'slug' => 'cordog',
+                'shop_name' => 'Corndog',
+                'slug' => 'corndog',
                 'category' => 'Makanan Ringan',
                 'location' => 'Sakan 1',
-                'description' => 'Cordog.',
-                'keywords' => 'Snack & Cemilan, cordog, sakan 1, fauzan',
+                'description' => 'Corndog renyah, krupuk, dan makaroni gurih.',
+                'keywords' => 'Snack & Cemilan, corndog, krupuk, makaroni, sakan 1, fauzan',
                 'schedule' => [
                     ['start' => '16:00', 'end' => '22:00'],
                 ],
                 'qris_file' => 'student-cordog.jpg',
                 'products' => [
-                    ['name' => 'Cordog', 'price' => 8000, 'description' => null],
+                    ['name' => 'Corndog', 'price' => 2500, 'description' => null],
+                    ['name' => 'Krupuk', 'price' => 3000, 'description' => null],
+                    ['name' => 'Makaroni', 'price' => 3000, 'description' => null],
                 ],
             ],
             [
@@ -236,10 +239,10 @@ class StudentMerchantSeeder extends Seeder
             $qrisRelativePath = 'qris-images/'.$data['qris_file'];
 
             $merchant = Merchant::updateOrCreate(
-                ['slug' => $data['slug']],
+                ['user_id' => $user->id],
                 [
-                    'user_id' => $user->id,
                     'name' => $data['shop_name'],
+                    'slug' => $data['slug'],
                     'phone' => $data['phone'],
                     'qris_image' => $qrisRelativePath,
                     'location' => $data['location'],
