@@ -100,15 +100,17 @@ class StudentMerchantSeeder extends Seeder
                 'slug' => 'aqeepstore',
                 'category' => 'Makanan Ringan',
                 'location' => 'Kamar Asrama',
-                'description' => 'Moring pedas & asin (2k, beli 3 5k), Makaroni (3k, beli 2 5k).',
+                'description' => 'Moring pedas & asin, dan Makaroni gurih.',
                 'keywords' => 'Snack & Cemilan, moring, makaroni, pedas, asin, tsaqif',
                 'schedule' => [
                     ['start' => '08:00', 'end' => '22:00'],
                 ],
                 'qris_file' => 'student-aqeepstore.jpg',
                 'products' => [
-                    ['name' => 'Moring (Beli 3 Rp 5k)', 'price' => 2000, 'description' => 'Beli 3 hanya Rp 5.000'],
-                    ['name' => 'Makaroni (Beli 2 Rp 5k)', 'price' => 3000, 'description' => 'Beli 2 hanya Rp 5.000'],
+                    ['name' => 'Moring (1 pcs)', 'price' => 2000, 'description' => null],
+                    ['name' => 'Paket Murah Moring (3 pcs)', 'price' => 5000, 'description' => null],
+                    ['name' => 'Makaroni (1 pcs)', 'price' => 3000, 'description' => null],
+                    ['name' => 'Paket Murah Makaroni (2 pcs)', 'price' => 5000, 'description' => null],
                 ],
             ],
             [
