@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Route;
 // Halaman Utama Publik (Landing Page QRIS Mahasiswa IDN)
 Route::get('/', function (Request $request) {
     $search = trim((string) $request->input('q', ''));
-    $openOnly = $request->boolean('open_only');
 
     $merchants = Merchant::query()
         ->select(['id', 'user_id', 'name', 'slug', 'phone', 'qris_image', 'description', 'keywords', 'location', 'is_open', 'schedule'])
@@ -20,13 +19,5 @@ Route::get('/', function (Request $request) {
         ->latest()
         ->get();
 
-    if ($openOnly) {
-        $merchants = $merchants->filter(function ($merchant) {
-            $status = $merchant->operationalStatus();
-
-            return $status['open'] === true;
-        })->values();
-    }
-
-    return view('welcome', compact('merchants', 'search', 'openOnly'));
+    return view('welcome', compact('merchants', 'search'));
 })->name('home');

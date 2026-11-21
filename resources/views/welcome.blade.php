@@ -156,19 +156,6 @@
                     <span id="audio-status-text">Audio: Nyala</span>
                 </button>
 
-                {{-- Filter Pill: Semua vs Sedang Buka Saja --}}
-                <div class="inline-flex rounded-xl bg-slate-100 p-0.5 border border-slate-200/70 text-xs font-bold">
-                    <a href="{{ route('home', array_filter(['q' => $search])) }}#katalog-lapak"
-                       class="px-3.5 py-1.5 rounded-lg transition {{ empty($openOnly) ? 'bg-white text-blue-700 shadow-xs' : 'text-slate-500 hover:text-slate-800' }}">
-                        Semua Lapak
-                    </a>
-                    <a href="{{ route('home', array_filter(['q' => $search, 'open_only' => 1])) }}#katalog-lapak"
-                       class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition {{ !empty($openOnly) ? 'bg-emerald-500 text-white shadow-xs' : 'text-slate-500 hover:text-slate-800' }}">
-                        <span class="w-2 h-2 rounded-full {{ !empty($openOnly) ? 'bg-white' : 'bg-emerald-500 ring-2 ring-emerald-300/50' }}"></span>
-                        Sedang Buka
-                    </a>
-                </div>
-
                 <span class="text-xs font-bold text-blue-700 bg-blue-50 border border-blue-200/70 px-3.5 py-2 rounded-xl">
                     {{ $merchants->count() }} Lapak
                 </span>
@@ -201,7 +188,6 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach ($merchants as $m)
                     @php
-                        $op = $m->operationalStatus();
                         $qrisUrl = $m->qris_image ? asset('storage/' . $m->qris_image) : null;
                         $waChatText = rawurlencode("Halo {$m->name}, saya lihat lapaknya di PentaCart IDN. Mau tanya / pesan ya!");
                         $waUrl = 'https://wa.me/' . preg_replace('/[^0-9]/', '', $m->phone) . '?text=' . $waChatText;
@@ -214,15 +200,12 @@
                         {{-- Ambient Accent Glow --}}
                         <div class="pointer-events-none absolute -right-10 -top-10 w-36 h-36 rounded-full bg-blue-500/5 blur-2xl group-hover/card:bg-blue-500/10 transition-colors"></div>
 
-                        {{-- Card Header: Status, Kategori & Salin Link --}}
+                        {{-- Card Header: Kategori & Salin Link --}}
                         <div class="relative z-10 flex items-center justify-between gap-2 pb-3 border-b border-slate-100">
                             <div class="flex items-center gap-1.5 flex-wrap">
-                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-extrabold uppercase {{ $op['open'] ? 'bg-emerald-50 text-emerald-700 border border-emerald-200/70' : 'bg-amber-50 text-amber-700 border border-amber-200/70' }}">
-                                    <span class="w-2 h-2 rounded-full {{ $op['open'] ? 'bg-emerald-500 ring-2 ring-emerald-300/50' : 'bg-amber-500' }}"></span>
-                                    {{ $op['label'] }}
-                                </span>
                                 @if ($m->category)
-                                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold text-slate-600 bg-slate-100 border border-slate-200/70">
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold text-slate-700 bg-slate-100 border border-slate-200/80">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
                                         {{ $m->category }}
                                     </span>
                                 @endif
@@ -281,7 +264,7 @@
 
                             {{-- Panel 2: Holographic QRIS Shutter (Langsung Muncul saat Cursor di Atas Kartu) --}}
                             @if ($qrisUrl)
-                                <div onclick="openQrisModal({{ Js::from($m->name) }}, {{ Js::from($qrisUrl) }}, {{ Js::from($waUrl) }}, {{ Js::from($m->location ?? 'Kampus IDN') }}, {{ Js::from($op['label']) }})"
+                                <div onclick="openQrisModal({{ Js::from($m->name) }}, {{ Js::from($qrisUrl) }}, {{ Js::from($waUrl) }}, {{ Js::from($m->location ?? 'Kampus IDN') }}, {{ Js::from($m->category ?? 'QRIS Resmi') }})"
                                      role="button"
                                      tabindex="0"
                                      aria-label="Perbesar QRIS {{ $m->name }}"
@@ -316,7 +299,7 @@
                         <div class="relative z-10 pt-3 border-t border-slate-100 grid grid-cols-2 gap-2">
                             @if ($qrisUrl)
                                 <button type="button"
-                                        onclick="openQrisModal({{ Js::from($m->name) }}, {{ Js::from($qrisUrl) }}, {{ Js::from($waUrl) }}, {{ Js::from($m->location ?? 'Kampus IDN') }}, {{ Js::from($op['label']) }})"
+                                        onclick="openQrisModal({{ Js::from($m->name) }}, {{ Js::from($qrisUrl) }}, {{ Js::from($waUrl) }}, {{ Js::from($m->location ?? 'Kampus IDN') }}, {{ Js::from($m->category ?? 'QRIS Resmi') }})"
                                         title="Buka & Download QRIS {{ $m->name }}"
                                         aria-label="Buka & Download QRIS {{ $m->name }}"
                                         class="py-2.5 px-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-sm shadow-blue-600/20 transition cursor-pointer flex items-center justify-center gap-1.5">
@@ -543,7 +526,7 @@
                 'Cari "Dzulfathan" (Roti Aoka)...',
                 'Cari "Azhar" (Ceroxand Basreng)...',
                 'Cari "Azhim" (Ubilum)...',
-                'Cari "Ghulam" (Junk Food)...'
+                'Cari "Ghulam" (Leam Food)...'
             ];
 
             let sIndex = 0;
