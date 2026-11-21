@@ -166,7 +166,7 @@ class StudentMerchantSeeder extends Seeder
                 ],
                 'qris_file' => 'student-ubilum.jpg',
                 'products' => [
-                    ['name' => 'Ubilum', 'price' => 5000, 'description' => null],
+                    ['name' => 'Ubilum', 'price' => 12000, 'description' => null],
                 ],
             ],
             [
