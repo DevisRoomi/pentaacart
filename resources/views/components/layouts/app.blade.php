@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <meta name="description" content="PentaCart IDN - Katalog QRIS & Pesan Antar Asrama Mahasiswa IDN Boarding School. Lihat daftar menu, scan QRIS langsung, dan pesan via WhatsApp.">
+    <meta name="description" content="PentaaCart IDN - Katalog QRIS & Pesan Antar Asrama Mahasiswa IDN Boarding School. Lihat daftar menu, scan QRIS langsung, dan pesan via WhatsApp.">
     <meta name="theme-color" content="#2563eb">
-    <title>{{ $title ?? 'PentaCart IDN - Katalog QRIS & Pesan Antar Asrama' }}</title>
+    <title>{{ $title ?? 'PentaaCart IDN - Katalog QRIS & Pesan Antar Asrama' }}</title>
 
     <link rel="icon" type="image/webp" href="{{ asset('images/logo-pentacart.webp') }}">
 
@@ -24,14 +24,14 @@
     {{-- Header / Navbar --}}
     <header class="sticky top-0 z-40 bg-white/90 sm:bg-white/70 backdrop-blur-md border-b border-slate-200/60 shadow-xs">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-            <a href="{{ route('home') }}" class="flex items-center gap-2.5 group" aria-label="Beranda PentaCart IDN">
+            <a href="{{ route('home') }}" class="flex items-center gap-2.5 group" aria-label="Beranda PentaaCart IDN">
                 <img src="{{ asset('images/logo-pentacart.webp') }}"
-                     alt="Logo PentaCart IDN"
+                     alt="Logo PentaaCart IDN"
                      width="36"
                      height="36"
                      class="w-9 h-9 rounded-xl object-contain shadow-xs border border-blue-100 bg-white p-0.5 group-hover:scale-105 transition-transform">
                 <div class="flex items-center gap-1.5">
-                    <span class="font-bold text-lg text-slate-900 tracking-tight">PentaCart</span>
+                    <span class="font-bold text-lg text-slate-900 tracking-tight">PentaaCart</span>
                     <span class="text-[10px] font-extrabold uppercase px-1.5 py-0.5 rounded-md bg-blue-50 text-blue-700 border border-blue-200/60 tracking-wider">IDN</span>
                 </div>
             </a>
@@ -54,7 +54,7 @@
 
     {{-- Footer Editorial --}}
     <footer class="mt-auto border-t border-slate-200/60 bg-white/40 py-6 text-center text-xs text-slate-500">
-        <p class="font-medium">PentaCart IDN &copy; {{ date('Y') }} &bull; Solusi QRIS & Pesan Antar Asrama Mahasiswa</p>
+        <p class="font-medium">PentaaCart IDN &copy; {{ date('Y') }} &bull; Solusi QRIS & Pesan Antar Asrama Mahasiswa</p>
     </footer>
 </body>
 </html>

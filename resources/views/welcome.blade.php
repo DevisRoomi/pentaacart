@@ -1,4 +1,4 @@
-<x-layouts.app title="PentaCart IDN - Katalog QRIS & Pesan Antar Asrama Mahasiswa">
+<x-layouts.app title="PentaaCart IDN - Katalog QRIS & Pesan Antar Asrama Mahasiswa">
     {{-- 1. HERO STAGE: Editorial + 3D QRIS Kampus Hub (1:1 moodboard inspired) --}}
     <section class="relative pt-2 pb-10 sm:pb-14 animate-editorial-in">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
@@ -59,7 +59,7 @@
                          style="transform-style: preserve-3d;">
 
                         <img src="{{ asset('images/hero-qris-kampus.webp') }}"
-                             alt="Ekosistem QRIS Mahasiswa Kampus PentaCart IDN"
+                             alt="Ekosistem QRIS Mahasiswa Kampus PentaaCart IDN"
                              width="580"
                              height="435"
                              fetchpriority="high"
@@ -187,7 +187,7 @@
                     @if (! empty($search))
                         Coba kata kunci lain seperti nama makanan, minuman, atau reset pencarian.
                     @else
-                        Jadilah mahasiswa pertama yang memajang QRIS jualannya di PentaCart IDN!
+                        Jadilah mahasiswa pertama yang memajang QRIS jualannya di PentaaCart IDN!
                     @endif
                 </p>
                 @if (! empty($search))
@@ -203,7 +203,7 @@
                     @php
                         $op = $m->operationalStatus();
                         $qrisUrl = $m->qris_image ? asset('storage/' . $m->qris_image) : null;
-                        $waChatText = rawurlencode("Halo {$m->name}, saya lihat lapaknya di PentaCart IDN. Mau tanya / pesan ya!");
+                        $waChatText = rawurlencode("Halo {$m->name}, saya lihat lapaknya di PentaaCart IDN. Mau tanya / pesan ya!");
                         $waUrl = 'https://wa.me/' . preg_replace('/[^0-9]/', '', $m->phone) . '?text=' . $waChatText;
                     @endphp
 
@@ -366,7 +366,7 @@
             </div>
 
             <div class="grid grid-cols-2 gap-2.5">
-                <a id="modal-qris-download" href="#" download="qris-pentacart.svg"
+                <a id="modal-qris-download" href="#" download="qris-pentaacart.svg"
                    class="py-2.5 px-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-sm transition text-center">
                     Download QRIS
                 </a>
