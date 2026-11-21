@@ -5,7 +5,7 @@
             {{-- Kiri: Copywriting Editorial Padat + Live Search Bar --}}
             <div class="lg:col-span-5 space-y-5 text-center lg:text-left">
                 <span class="inline-flex items-center gap-2 px-3 py-1 text-[11px] font-extrabold uppercase tracking-wider text-blue-700 bg-blue-50/90 border border-blue-200/80 rounded-full shadow-xs">
-                    <span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span>
+                    <span class="w-2 h-2 rounded-full bg-blue-600 ring-2 ring-blue-300/50"></span>
                     Satu Hub QRIS Mahasiswa IDN
                 </span>
 
@@ -60,7 +60,10 @@
 
                         <img src="{{ asset('images/hero-qris-kampus.webp') }}"
                              alt="Ekosistem QRIS Mahasiswa Kampus PentaCart IDN"
+                             width="580"
+                             height="435"
                              fetchpriority="high"
+                             decoding="async"
                              class="w-full h-full object-cover select-none pointer-events-none">
 
                         {{-- Animated Laser Scanner Sweep inside Central Smartphone QR Box --}}
@@ -114,7 +117,7 @@
                     </div>
                 </div>
                 <p class="hidden sm:flex items-center justify-center gap-1.5 mt-2.5 text-[11px] font-medium text-slate-500">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                     Tip: Arahkan kursor atau klik kartu kategori di dalam visual untuk memfilter katalog.
                 </p>
             </div>
@@ -126,7 +129,7 @@
         <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 border-b border-blue-100/80">
             <div>
                 <span class="inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-extrabold uppercase tracking-wider text-blue-700 bg-blue-50 border border-blue-200/60 rounded-full mb-2">
-                    <span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span>
+                    <span class="w-2 h-2 rounded-full bg-blue-600 ring-2 ring-blue-300/50"></span>
                     Katalog Lapak Asrama
                 </span>
                 <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
@@ -161,7 +164,7 @@
                     </a>
                     <a href="{{ route('home', array_filter(['q' => $search, 'open_only' => 1])) }}#katalog-lapak"
                        class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition {{ !empty($openOnly) ? 'bg-emerald-500 text-white shadow-xs' : 'text-slate-500 hover:text-slate-800' }}">
-                        <span class="w-1.5 h-1.5 rounded-full {{ !empty($openOnly) ? 'bg-white animate-pulse' : 'bg-emerald-500' }}"></span>
+                        <span class="w-2 h-2 rounded-full {{ !empty($openOnly) ? 'bg-white' : 'bg-emerald-500 ring-2 ring-emerald-300/50' }}"></span>
                         Sedang Buka
                     </a>
                 </div>
@@ -191,10 +194,6 @@
                     <a href="{{ route('home') }}#katalog-lapak" class="inline-flex text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2.5 rounded-xl shadow-xs transition">
                         Tampilkan Semua Lapak
                     </a>
-                @else
-                    <a href="{{ route('register') }}" class="inline-flex text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2.5 rounded-xl shadow-xs transition">
-                        Mulai Buka Lapak
-                    </a>
                 @endif
             </div>
         @else
@@ -219,7 +218,7 @@
                         <div class="relative z-10 flex items-center justify-between gap-2 pb-3 border-b border-slate-100">
                             <div class="flex items-center gap-1.5 flex-wrap">
                                 <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-extrabold uppercase {{ $op['open'] ? 'bg-emerald-50 text-emerald-700 border border-emerald-200/70' : 'bg-amber-50 text-amber-700 border border-amber-200/70' }}">
-                                    <span class="w-1.5 h-1.5 rounded-full {{ $op['open'] ? 'bg-emerald-500 animate-pulse' : 'bg-amber-500' }}"></span>
+                                    <span class="w-2 h-2 rounded-full {{ $op['open'] ? 'bg-emerald-500 ring-2 ring-emerald-300/50' : 'bg-amber-500' }}"></span>
                                     {{ $op['label'] }}
                                 </span>
                                 @if ($m->category)
@@ -240,7 +239,7 @@
                             </button>
                         </div>
 
-                        {{-- Card Middle: Dynamic Holographic Stage (Berubah Jadi QRIS saat Cursor Hover) --}}
+                        {{-- Card Middle: Dynamic Holographic Stage (Berubah Jadi QRIS saat Cursor Hover di Desktop) --}}
                         <div class="relative z-10 flex-1 py-3 flex flex-col justify-center overflow-hidden min-h-[250px]">
                             
                             {{-- Panel 1: Info Lapak & Daftar Harga Menu Lengkap --}}
@@ -295,6 +294,8 @@
                                     <div class="w-full flex-1 max-h-[195px] flex items-center justify-center p-2 rounded-xl bg-white border border-slate-200/90 shadow-sm group-hover/qr:border-blue-400 group-hover/qr:shadow-md transition">
                                         <img src="{{ $qrisUrl }}"
                                              alt="QRIS {{ $m->name }}"
+                                             width="180"
+                                             height="180"
                                              loading="lazy"
                                              decoding="async"
                                              class="w-full h-full max-h-[180px] object-contain select-none">
@@ -361,7 +362,7 @@
             <p id="modal-qris-location" class="text-xs text-slate-500 mt-0.5 mb-4">Lokasi</p>
 
             <div class="p-4 rounded-2xl bg-slate-50 border border-blue-100 inline-block mb-5 max-w-full">
-                <img id="modal-qris-img" src="" alt="QRIS Zoom" loading="lazy" decoding="async" class="w-72 sm:w-80 max-h-[380px] object-contain rounded-xl bg-white mx-auto shadow-sm p-2">
+                <img id="modal-qris-img" src="" alt="QRIS Zoom" width="320" height="320" loading="lazy" decoding="async" class="w-72 sm:w-80 max-h-[380px] object-contain rounded-xl bg-white mx-auto shadow-sm p-2">
             </div>
 
             <div class="grid grid-cols-2 gap-2.5">
@@ -462,7 +463,6 @@
             gain.connect(ctx.destination);
 
             if (type === 'tick') {
-                // Suara geseran reel kaset / scroll tick mekanikal
                 osc.type = 'triangle';
                 osc.frequency.setValueAtTime(420, now);
                 osc.frequency.exponentialRampToValueAtTime(140, now + 0.025);
@@ -471,7 +471,6 @@
                 osc.start(now);
                 osc.stop(now + 0.025);
             } else if (type === 'hover') {
-                // Suara pop kartu mengambang halus
                 osc.type = 'sine';
                 osc.frequency.setValueAtTime(780, now);
                 osc.frequency.exponentialRampToValueAtTime(880, now + 0.04);
@@ -480,7 +479,6 @@
                 osc.start(now);
                 osc.stop(now + 0.04);
             } else if (type === 'qris') {
-                // Suara scanner digital futuristik (two-tone beep)
                 osc.type = 'sine';
                 osc.frequency.setValueAtTime(520, now);
                 osc.frequency.setValueAtTime(1040, now + 0.04);
@@ -489,7 +487,6 @@
                 osc.start(now);
                 osc.stop(now + 0.12);
             } else {
-                // Click default
                 osc.type = 'triangle';
                 osc.frequency.setValueAtTime(600, now);
                 osc.frequency.exponentialRampToValueAtTime(200, now + 0.03);
@@ -525,14 +522,13 @@
             const modal = document.getElementById('qris-zoom-modal');
             const isModalOpen = modal && !modal.classList.contains('hidden');
 
-            // Jika modal QRIS sedang terbuka: tombol Escape menutup modal
             if (isModalOpen && (e.key === 'Escape' || e.key === 'Esc')) {
                 closeQrisModal();
             }
         });
 
-        // Dynamic typing placeholder based on actual registered merchants & students
-        (function () {
+        // Dynamic typing placeholder - deferred after page load to keep TBT at 0ms
+        window.addEventListener('load', function () {
             const searchInput = document.getElementById('hero-search-input');
             if (!searchInput) return;
 
@@ -580,14 +576,14 @@
                     searchInput.setAttribute('placeholder', currentText.substring(0, charIndex));
                     if (charIndex === currentText.length) {
                         isDeleting = true;
-                        setTimeout(typeStep, 2200); // pause saat teks selesai
+                        setTimeout(typeStep, 2500);
                         return;
                     }
                     setTimeout(typeStep, 70);
                 }
             }
 
-            setTimeout(typeStep, 1200);
-        })();
+            setTimeout(typeStep, 2000);
+        });
     </script>
 </x-layouts.app>

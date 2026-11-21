@@ -30,7 +30,7 @@ class StudentMerchantSeeder extends Seeder
                 ],
                 'qris_file' => 'student-gorio-rio.jpg',
                 'products' => [
-                    ['name' => 'Gorio Rio Es', 'price' => 5000, 'description' => null],
+                    ['name' => 'Gorio Rio Es', 'price' => 500, 'description' => null],
                 ],
             ],
             [
