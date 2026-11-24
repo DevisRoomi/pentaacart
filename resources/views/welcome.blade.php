@@ -250,7 +250,12 @@
                                     <div class="pt-1.5 space-y-1.5 max-h-[195px] overflow-y-auto no-scrollbar">
                                         @foreach ($m->products as $prod)
                                             <div class="flex items-center justify-between text-xs bg-slate-50 hover:bg-slate-100/90 px-3 py-1.5 rounded-xl border border-slate-100/90 transition-colors">
-                                                <span class="text-slate-800 font-semibold truncate pr-2">{{ $prod->name }}</span>
+                                                <div class="min-w-0 pr-2">
+                                                    <span class="text-slate-800 font-semibold truncate">{{ $prod->name }}</span>
+                                                    @if ($prod->description)
+                                                        <span class="block text-[10px] font-medium text-slate-500">{{ $prod->description }}</span>
+                                                    @endif
+                                                </div>
                                                 <span class="font-black text-blue-700 shrink-0">Rp {{ number_format($prod->price, 0, ',', '.') }}</span>
                                             </div>
                                         @endforeach

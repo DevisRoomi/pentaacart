@@ -11,7 +11,7 @@ Route::get('/', function (Request $request) {
     $merchants = Merchant::query()
         ->select(['id', 'user_id', 'name', 'slug', 'phone', 'qris_image', 'description', 'keywords', 'location', 'is_open', 'schedule'])
         ->with(['products' => function ($q) {
-            $q->select(['id', 'merchant_id', 'name', 'price', 'is_available'])
+            $q->select(['id', 'merchant_id', 'name', 'price', 'description', 'is_available'])
                 ->where('is_available', true)
                 ->latest();
         }])

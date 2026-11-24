@@ -44,33 +44,58 @@ class ExampleTest extends TestCase
         $res->assertSee('https://wa.me/6281234567890');
     }
 
-    public function test_landing_page_can_filter_open_only(): void
+    public function test_landing_page_displays_merchant_products_and_prices(): void
     {
-        $user1 = User::factory()->create();
-        $user2 = User::factory()->create();
+        $user = User::factory()->create();
 
-        $openMerchant = Merchant::create([
-            'user_id' => $user1->id,
-            'name' => 'Lapak Buka Terus',
-            'slug' => 'lapak-buka-terus',
-            'phone' => '628111111112',
+        $merchant = Merchant::create([
+            'user_id' => $user->id,
+            'name' => 'Gorio Rio Asrama',
+            'slug' => 'gorio-rio-asrama',
+            'phone' => '6281455147800',
             'is_open' => true,
             'schedule' => null,
         ]);
 
-        $closedMerchant = Merchant::create([
-            'user_id' => $user2->id,
-            'name' => 'Lapak Tutup Dulu',
-            'slug' => 'lapak-tutup-dulu',
-            'phone' => '628222222223',
-            'is_open' => false,
+        $merchant->products()->create([
+            'name' => 'Gorio Rio Es',
+            'price' => 1500,
+            'is_available' => true,
+        ]);
+
+        $response = $this->get('/');
+
+        $response->assertStatus(200);
+        $response->assertSee('Gorio Rio Asrama');
+        $response->assertSee('Gorio Rio Es');
+        $response->assertSee('Rp 1.500');
+    }
+
+    public function test_landing_page_displays_product_description(): void
+    {
+        $user = User::factory()->create();
+
+        $merchant = Merchant::create([
+            'user_id' => $user->id,
+            'name' => 'Mie Arya Asrama',
+            'slug' => 'mie-arya-asrama',
+            'phone' => '6282288705542',
+            'is_open' => true,
             'schedule' => null,
         ]);
 
-        $response = $this->get('/?open_only=1');
+        $merchant->products()->create([
+            'name' => 'Jasa Masak',
+            'price' => 2000,
+            'description' => 'jasa masak (bawa mie sendiri)',
+            'is_available' => true,
+        ]);
+
+        $response = $this->get('/');
 
         $response->assertStatus(200);
-        $response->assertSee('Lapak Buka Terus');
-        $response->assertDontSee('Lapak Tutup Dulu');
+        $response->assertSee('Mie Arya Asrama');
+        $response->assertSee('Jasa Masak');
+        $response->assertSee('jasa masak (bawa mie sendiri)');
     }
 }

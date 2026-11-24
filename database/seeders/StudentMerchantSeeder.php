@@ -30,7 +30,7 @@ class StudentMerchantSeeder extends Seeder
                 ],
                 'qris_file' => 'student-gorio-rio.jpg',
                 'products' => [
-                    ['name' => 'Gorio Rio Es', 'price' => 500, 'description' => null],
+                    ['name' => 'Gorio Rio Es', 'price' => 1500, 'description' => null],
                 ],
             ],
             [
@@ -69,7 +69,7 @@ class StudentMerchantSeeder extends Seeder
                 'products' => [
                     ['name' => '1 Mie', 'price' => 6000, 'description' => null],
                     ['name' => '2 Mie', 'price' => 10000, 'description' => null],
-                    ['name' => 'Jasa Masak', 'price' => 2000, 'description' => null],
+                    ['name' => 'Jasa Masak', 'price' => 2000, 'description' => 'jasa masak (bawa mie sendiri)'],
                 ],
             ],
             [
@@ -173,20 +173,18 @@ class StudentMerchantSeeder extends Seeder
                 'student_name' => 'Fauzan Rizky',
                 'email' => 'fauzan@pentacart.idn',
                 'phone' => '6285719496404',
-                'shop_name' => 'Corndog',
+                'shop_name' => 'Aneka krupuk',
                 'slug' => 'corndog',
                 'category' => 'Makanan Ringan',
                 'location' => 'Sakan 1',
-                'description' => 'Corndog renyah, krupuk, dan makaroni gurih.',
-                'keywords' => 'Snack & Cemilan, corndog, krupuk, makaroni, sakan 1, fauzan',
+                'description' => 'Ada 6 varian krupuk.',
+                'keywords' => 'Snack & Cemilan, aneka krupuk, krupuk, sakan 1, fauzan',
                 'schedule' => [
                     ['start' => '16:00', 'end' => '22:00'],
                 ],
                 'qris_file' => 'student-cordog.jpg',
                 'products' => [
-                    ['name' => 'Corndog', 'price' => 2500, 'description' => null],
                     ['name' => 'Krupuk', 'price' => 3000, 'description' => null],
-                    ['name' => 'Makaroni', 'price' => 3000, 'description' => null],
                 ],
             ],
             [
